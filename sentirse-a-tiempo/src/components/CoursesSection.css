@@ -1,0 +1,13 @@
+.courses{padding:28px 0}
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+.course-card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+.course-card h4{margin:0 0 8px}
+.meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+
+
+@media (max-width:980px){
+.courses-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+.courses-grid{grid-template-columns:1fr}
+}
