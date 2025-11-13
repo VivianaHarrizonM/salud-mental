@@ -1,15 +1,17 @@
 
-import Hero from '../components/Hero'
-import CoursesSection from '../components/CoursesSection'
+import Hero from '../components/Hero';
+import CoursesSection from '../components/CoursesSection';
+import IntroSection from '../components/IntroSection';
 
-
-export default function Home(){
-return (
-<div>
-<div className="container">
-<Hero />
-</div>
-<CoursesSection />
-</div>
-)
+export default function Home() {
+  return (
+    <div>
+      <div className="container">
+        < IntroSection/>
+        <Hero />
+      </div>
+      
+      <CoursesSection />
+    </div>
+  );
 }

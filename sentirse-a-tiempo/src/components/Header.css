@@ -1,71 +1,177 @@
-.site-header{
-  background:transparent;
-  padding:14px 0
+.site-header {
+  background: transparent;
+  padding: 14px 0;
+  position: relative;
+  z-index: 100;
 }
-.header-inner{
-  display:flex
-  ;align-items:center;
-  justify-content:space-between
-}
-.brand{
-  display:flex;
-  gap:12px;
-  align-items:center
-}
-.logo{
-  width:48px;
-  height:48px;
-  border-radius:10px;
-  background:linear-gradient(135deg,var(--accent),#6aa892);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-weight:800
-}
-.brand-title{font-weight:800}
-.brand-sub{font-size:13px}
 
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-.nav{
-  display:flex;
-  gap:16px;
-  align-items:center
+/* Marca */
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
-.nav a{
-  color:var(--text);
-  font-weight:600
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), #6aa892);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
 }
-.btn-primary{
-  background:var(--accent);
-  color:white;
-  padding:8px 12px;
-  border-radius:10px
+
+.brand-title {
+  font-weight: 800;
 }
+
+.brand-sub {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Navegación */
+.nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nav a {
+  color: var(--text);
+  font-weight: 600;
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a.active {
+  background-color: rgba(90, 175, 150, 0.15);
+  color: var(--accent);
+  border-radius: 8px;
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
+/* Botones */
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #84ddbc;
+  transform: scale(1.03);
+}
+
 .btn-ghost {
   padding: 8px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   background-color: transparent;
   color: #333;
-  transition: all 0.3s ease; /* suaviza el cambio */
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
-
 
 .btn-ghost:hover {
   background-color: #f0f0f0;
   border-color: #ccc;
 }
 
-.btn-ghost:active {
-  background-color: #ddd;
-  transform: scale(0.97); 
+/* --- Estilos Responsive --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  width: 26px;
+  height: 22px;
+  justify-content: center;
 }
 
-.btn-ghost:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
-@media (max-width:720px){
-.nav{gap:8px;font-size:14px}
+
+/* Animación hamburguesa */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+/* Móviles */
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    width: 80%;
+    margin: 0 auto;
+  }
 }

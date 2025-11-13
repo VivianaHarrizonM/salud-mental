@@ -19,6 +19,7 @@ return (
       <div className="hero-media">
         {/* espacio para una tarjeta o imagen secundaria si se quiere */}
       </div>
+      
     </div>
   </section>
   )
