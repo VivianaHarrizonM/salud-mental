@@ -11,35 +11,45 @@
   justify-content: space-between;
 }
 
-/* Marca */
 .brand {
   display: flex;
   gap: 12px;
   align-items: center;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: rgba(106, 247, 204, 0.1); 
+  backdrop-filter: blur(6px);
 }
 
 .logo {
   width: 48px;
   height: 48px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), #6aa892);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 800;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #78c8ac, #5aa796);
+  box-shadow: 0 4px 12px rgba(90, 175, 150, 0.25);
+  font-size: 20px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+  font-weight: 800; 
 }
 
 .brand-title {
   font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.3px;
 }
 
 .brand-sub {
   font-size: 13px;
-  color: #666;
+  opacity: 0.8;
 }
-
-/* Navegación */
+.brand div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .nav {
   display: flex;
   gap: 16px;

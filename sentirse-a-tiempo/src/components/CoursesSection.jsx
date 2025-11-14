@@ -19,6 +19,7 @@ export default function CoursesSection() {
         {courses.map(c => (
           <Link key={c.id} to={`/courses/${c.id}`} className="course-card-link">
             <article className="course-card">
+              <div className="course-number icon-bubble icon">{c.id}</div>
               <h4>{c.title}</h4>
               <div className="meta">Duración: {c.duration}</div>
               <p className="text-muted">{c.desc}</p>
