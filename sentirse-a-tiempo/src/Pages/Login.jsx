@@ -9,7 +9,8 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
     localStorage.setItem('auth_token', 'demo-token')
-    navigate('/dashboard')
+
+    navigate('/', { replace: true })
   }
 
   return (
@@ -18,7 +19,7 @@ export default function Login() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '80vh',
+        minHeight: '0vh',
         background: 'var(--bg)',
         padding: '2rem',
       }}
@@ -36,7 +37,10 @@ export default function Login() {
           gap: '1rem',
         }}
       >
-        <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>Iniciar sesión</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>
+          Iniciar sesión
+        </h2>
+
         <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 14 }}>
           <label className="text-muted">Correo electrónico</label>
           <input
@@ -44,12 +48,8 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="tu@correo.com"
-            style={{
-              borderRadius: 8,
-              border: '1px solid #ddd',
-              padding: '10px 12px',
-            }}
             required
+            style={{padding:8, borderRadius:8, border:'solid 1px #07c7a7'}}
           />
 
           <label className="text-muted">Contraseña</label>
@@ -58,12 +58,8 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="••••••••"
-            style={{
-              borderRadius: 8,
-              border: '1px solid #ddd',
-              padding: '10px 12px',
-            }}
             required
+            style={{padding:8, borderRadius:8, border:'solid 1px #07c7a7'}}
           />
 
           <button
@@ -74,11 +70,7 @@ export default function Login() {
               padding: '12px',
               borderRadius: 10,
               fontWeight: 600,
-              letterSpacing: 0.3,
-              transition: 'all 0.3s ease',
             }}
-            onMouseOver={(e) => (e.target.style.background = '#84ddbc')}
-            onMouseOut={(e) => (e.target.style.background = 'var(--accent)')}
           >
             Entrar
           </button>

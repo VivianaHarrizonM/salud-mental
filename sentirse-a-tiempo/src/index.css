@@ -39,6 +39,6 @@ button{
 }
 
 .text-muted{
-  color:var(--muted)
+  color:var(--muted);
 }
 

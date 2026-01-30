@@ -92,7 +92,17 @@
   font-size: 0.96rem;
   line-height: 1.6;
 }
+.course-card.locked {
+  opacity: 0.6;
+  position: relative;
+}
 
+.course-lock {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+}
 .course-card-link {
   text-decoration: none;
   color: inherit;

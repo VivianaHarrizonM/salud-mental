@@ -10,7 +10,7 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault()
     localStorage.setItem('auth_token', 'demo-token')
-    navigate('/dashboard')
+    navigate('/dashboard', { replace: true })
   }
 
   return (
