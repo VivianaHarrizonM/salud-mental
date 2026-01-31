@@ -1,17 +1,27 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import "./Header.css";
+import React, { useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import "./Header.css"
 
 export default function Header() {
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  const isAuth = Boolean(localStorage.getItem("auth_token"))
+
+  const toggleMenu = () => setMenuOpen(!menuOpen)
+  const closeMenu = () => setMenuOpen(false)
+
+  const handleLogout = () => {
+    localStorage.removeItem("auth_token")
+    closeMenu()
+    navigate("/", { replace: true })
+  }
 
   return (
     <header className="site-header">
       <div className="container header-inner">
+        {/* Marca */}
         <div className="brand">
           <div className="logo">ST</div>
           <div>
@@ -23,7 +33,10 @@ export default function Header() {
         </div>
 
         {/* Botón hamburguesa */}
-        <div className={`menu-toggle ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
+        <div
+          className={`menu-toggle ${menuOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -31,35 +44,43 @@ export default function Header() {
 
         {/* Navegación */}
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <Link to="/" onClick={closeMenu} className={location.pathname === "/" ? "active" : ""}>
+          <Link
+            to="/"
+            onClick={closeMenu}
+            className={location.pathname === "/" ? "active" : ""}
+          >
             Inicio
           </Link>
+
           <Link
             to="/recursos"
             onClick={closeMenu}
-            className={location.pathname === "/recursos" ? "active" : ""}
+            className={location.pathname === "/cursos" ? "active" : ""}
           >
             Recursos
           </Link>
-          <Link
-            to="/comunidad"
-            onClick={closeMenu}
-            className={location.pathname === "/comunidad" ? "active" : ""}
-          >
-            Comunidad
-          </Link>
-          {location.pathname !== "/login" && (
-            <Link to="/login" onClick={closeMenu} className="btn-ghost">
-              Iniciar
-            </Link>
-          )}
-          {location.pathname !== "/register" && (
-            <Link to="/register" onClick={closeMenu} className="btn-primary">
-              Regístrate
-            </Link>
+
+
+          {!isAuth ? (
+            <>
+              {location.pathname !== "/login" && (
+                <Link to="/login" onClick={closeMenu} className="btn-ghost">
+                  Iniciar
+                </Link>
+              )}
+              {location.pathname !== "/register" && (
+                <Link to="/register" onClick={closeMenu} className="btn-primary">
+                  Regístrate
+                </Link>
+              )}
+            </>
+          ) : (
+            <button onClick={handleLogout} className="btn-ghost">
+              Cerrar sesión
+            </button>
           )}
         </nav>
       </div>
     </header>
-  );
+  )
 }

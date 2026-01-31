@@ -1,60 +1,90 @@
+/* CONTENEDOR GENERAL */
 .course-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  color: #222;
   background-color: #f9faf9;
+  color: #222;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* 🖼 Imagen más pequeña y centrada */
+/* HERO */
+.course-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+/* IMAGEN */
 .course-image {
   width: 100%;
-  max-width: 350px; /* antes 700px */
-  height: auto;
+  max-width: 360px;
   border-radius: 20px;
-  margin-bottom: 30px;
   object-fit: contain;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-.course-description {
-  font-size: 1.05rem;
-  color: #555;
-  margin-bottom: 20px;
-  line-height: 1.6;
-  font-style: italic;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* 🧾 Contenedor del texto */
+/* CAJA DE TEXTO */
 .course-info {
-  max-width: 700px;
   width: 100%;
-  text-align: left;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 15px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  max-width: 720px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
+/* TITULO */
 .course-info h1 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   color: #2f7a6d;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
+/* DESCRIPCIÓN */
 .course-info p {
-  line-height: 1.6;
+  line-height: 1.7;
   color: #333;
+  margin-bottom: 16px;
 }
 
-/* 🔙 Enlace “Volver” */
+/* PREVIEW */
+.course-preview {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* CTA */
+.course-cta {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.text-muted {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+/* BOTÓN (asumo que ya existe pill / pill-primary) */
+
+/* BLOQUES DE CONTENIDO (cuando está logueado) */
+.course-info > div p {
+  margin-bottom: 14px;
+}
+
+/* LINK VOLVER */
 .back-link {
   display: inline-block;
-  margin-top: 25px;
+  margin-top: 30px;
   color: #2f7a6d;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
 }
 
 .back-link:hover {
@@ -62,18 +92,21 @@
   color: #225e54;
 }
 
-/* 📱 Responsive */
+/* RESPONSIVE */
 @media (min-width: 768px) {
+  .course-hero {
+    gap: 40px;
+  }
+
   .course-info {
     padding: 40px;
   }
 
   .course-info h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
 
   .course-image {
-    max-width: 400px;
-    margin-bottom: 40px;
+    max-width: 420px;
   }
 }
